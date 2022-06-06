@@ -26,7 +26,7 @@
     </div>
   </div>
 </template>
-<script lang="">
+<script>
 // language
 import "codemirror/mode/vue/vue";
 
@@ -156,4 +156,115 @@ export default {
   },
 };
 </script>
-<style lang=""></style>
+<style lang="less">
+.editor {
+  height: 100%;
+  .content {
+    height: 100%;
+    display: flex;
+
+    .preview-example {
+      flex: 2;
+      border: 1px solid #eee;
+    }
+
+    #iframe {
+      height: 100%;
+      width: 100%;
+    }
+
+    .code-wrapper {
+      flex: 1;
+      height: 100%;
+      width: 1px;
+      border: 1px solid #ddd;
+      border-top: 0 none;
+      position: static;
+      transition: none;
+      box-sizing: border-box;
+
+      &.hide {
+        right: -720px;
+      }
+      
+      .code-edit {
+        z-index: 10;
+        height: calc(100% - 42px);
+        border: 0 none;
+        border-radius: 0;
+        margin-left: 0;
+        position: relative;
+        box-shadow: none;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        height: 41px;
+        line-height: 41px;
+        color: #767676;
+        background: #f8f9fa;
+        font-size: 13px;
+        padding: 0 10px;
+        border-bottom: 1px solid #e5e5e5;
+
+        .button-wrap {
+          text-align: right;
+          line-height: 41px;
+          border: 0 none;
+
+          &>span {
+            font-size: 12px;
+            cursor: pointer;
+            padding: 0 16px;
+            margin-right: 0;
+            background-size: 13px auto;
+            background-repeat: no-repeat;
+
+            &:hover {
+              background-position: 0 -50px;
+              color: #9571e9;
+            }
+          }
+        }
+      }
+
+      .cm-s-default {
+        height: 100%;
+        padding-bottom: 30px;
+        box-sizing: border-box;
+        font-size: 13px;
+      }
+
+      .shrink {
+        position: absolute;
+        z-index: 9;
+        width: 20px;
+        height: 100%;
+        background: #46bd88;
+        line-height: 100px;
+        top: 50%;
+        left: -39px;
+        margin-top: -50px;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        cursor: pointer;
+        color: #fff;
+        padding-left: 3px;
+        user-select: none;
+      }
+    }
+  }
+}
+.CodeMirror-vscrollbar {
+  opacity: 0;
+}
+.CodeMirror-hscrollbar {
+  opacity: 1;
+}
+.CodeMirror-gutter-elt {
+  margin-left: -6px;
+}
+</style>
